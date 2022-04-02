@@ -25,21 +25,19 @@
 * Funkcja powinna weryfikować, czy przekazany parametr jest typu string. Jeśli parametr nie
 * spełnia tego warunku, funkcja powinna rzucić wyjątek.
 */
-//posted on 25.03.2022 https://replit.com/@moreelz4it/walidacja#index.js
+// on 28.03.2022 after code review moved original code to 
+// https://replit.com/@moreelz4it/walidacja-1#index.js
+// and to https://replit.com/@moreelz4it/walidacja-1#index.js add above code.
 function validatePassword(password) {
 	const signs = ["!", "@", "#"];
-	let results = [];
-	if(typeof password === 'string'){
-		if(password.length >=3 && password.length<=10) results.push(true);
-		if(password.split('').some(passIt => signs.some(signIt =>passIt ===signIt))) results.push(true);
-		if(/\d/g.test(password)) results.push(true);
-
-		if(results.length === 3 && results.every(it => it === true)) return true;
-		return false;
-	}
-		else{
-		return `Error: value don't have type string`;
+	if(typeof password !== 'string'){
+		throw new Error(`Argument don't have type string.`)
 		}
+		
+	// second way
+	const results = [password.length >=3, password.length<=10,
+					 password.split('').some(passIt => signs.some(signIt =>passIt === signIt)), /\d/g.test(password)];
+		return results.every(it => it === true);
 }
 
 /* Weryfikacja */
