@@ -2,7 +2,7 @@
   "name": "card-validator",
   "source": "src/index.html",
   "scripts": {
-    "start": "http-server ./src -c-1"
+    "start": "http-server ./ -c-1"
   },
   "devDependencies": {
     "http-server": "latest"
