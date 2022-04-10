@@ -25,22 +25,19 @@
 * 
 * 
 */
-
+'use strict';
 function countWords(sentence) {
-	let result = {};
+	const result = {};
 	const words = sentence.split(/[^\p{Letter}]+/igu);
 
-		for(word of words){
+		for(const word of words){
 		const lowerCaseWord = word.toLowerCase()
-		isWordAKeyInResult = Object.keys(result).some(item => item === lowerCaseWord)
+		const isWordAKeyInResult = Object.keys(result).some(item => item === lowerCaseWord)
 			
 		if(isWordAKeyInResult){
 			result[lowerCaseWord]++;
 		} else {
-			result = {
-				[lowerCaseWord]: 1,
-				...result
-			}
+			result[lowerCaseWord] = 1;
 		}
 	}
 
@@ -54,9 +51,9 @@ function areEqual(object, goal){
 	let result = [];
 	
 	
-	function nonSymetricalCompareOfObjects(object1, object2){
+	function nonSymmetricalCompareOfObjects(object1, object2){
 		let result = [];
-		for(parameter of Object.keys(object1)){
+		for(const parameter of Object.keys(object1)){
 		const isParameterExistInObject = Object.keys(object2).some(item => item === parameter)
 
 		if(isParameterExistInObject){
@@ -67,9 +64,8 @@ function areEqual(object, goal){
 		}
 		return result;
 	}
-	result = nonSymetricalCompareOfObjects(goalObject, objectLiteral)
-
-	result = nonSymetricalCompareOfObjects(objectLiteral, goalObject)
+	result.push(...nonSymmetricalCompareOfObjects(goalObject, objectLiteral), 
+	...nonSymmetricalCompareOfObjects(objectLiteral, goalObject))
 
 	return result !== [] && result.every(item => item === true);
 
@@ -103,4 +99,15 @@ verify(JSON.stringify(countWords("Tanie wino jest dobre, bo jest tanie i dobre")
   dobre: 2,
   bo: 1,
   i: 1,
+	}));
+
+	
+verify(JSON.stringify(countWords("Tanie wino jest dobre, bo jest tanie i dobre")), JSON.stringify(
+	{
+  tanie: 2,
+  wino: 1,
+  jest: 2,
+  dobre: 2,
+  bo: 1,
+  i: 2,
 	}));

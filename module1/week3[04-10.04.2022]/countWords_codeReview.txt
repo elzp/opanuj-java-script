@@ -1,0 +1,25 @@
+Hej - widzę że dodałaś areEqual
+jako poprawka weryfikacji / czy sprawdzenie siebie ?
+W sensie - nie wiem jaki powód, ale dobry sposób nauki :slightly_smiling_face:.
+Zaczniemy od:
+[Issue 1] (unpredictable consequences).
+W wielu miejscach zapominasz o tym że każda zmienna / stała musi być poprzedzona w JS:
+let / const
+To może tak, żeby się pilnować, przed wykonaniem zadania możesz sobie @ElaP dodać:
+"use strict";
+Możesz sobie zobaczyć na zdjęciach jak to wygląda z oraz bez:
+[Issue 2] (zombie code)
+Linia :70 nie jest zupełnie używana w kodzie, za chwilę zmienną result nadpisuje linia :72.
+[Issue 3](overcomplicated logic)
+Zamiast używać .some(item => item === parameter) sugeruję zapis: .includes(parameter)
+Podobnie: .some(item => item === lowerCaseWord) upraszcza: .includes(lowerCaseWord)
+Dużo prostsze w utrzymaniu i zapisie:
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
+[Issue 4] (redundant computation)
+Wiesz co, fajnie że w linii :42 zastosowałaś spread operator i wiesz jak to działa - tutaj plus.
+Jednak nie potrzeba co chwila "nadpisywać" istniejącego obiektu nowym - tworząc kolejny w pamięci.
+Dużo bezpieczniejsze rozwiązanie:
+robimy const z obiektu result
+w linii 40 zapisujemy result[lowerCaseWord] = 1
+[Issue 5] (typo)
+nonSymetrical  ---> nonSymmetrical
