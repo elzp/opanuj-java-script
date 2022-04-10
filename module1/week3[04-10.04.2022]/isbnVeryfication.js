@@ -28,17 +28,27 @@
 */
 
 function checkISBN(isbn) {
-	let result = 0;
-	const isbnWithoutPunctualtion = isbn
-		.match(/[\dX]/ig)
-		.toString()
-		.replace('X', 10)
-		.split(',');
-	const lengthOfISBN = isbnWithoutPunctualtion.length
+	const ISBN_CONTROL_NUMBER = 10;
 
-	result = isbnWithoutPunctualtion
+	let isbnWithoutPunctuation = isbn
+		.match(/[\dX]/ig);
+	if(isbnWithoutPunctuation !== []){
+		isbnWithoutPunctuation = isbnWithoutPunctuation.map(item =>{
+			if(item === 'X') {
+				return ISBN_CONTROL_NUMBER;
+			} else {
+				return item;
+			}
+
+		});
+	}
+	const lengthOfISBN = isbnWithoutPunctuation.length
+
+	let result = 0;
+	result = isbnWithoutPunctuation
 		.reduce((total,current, index) =>{
-			return total += Number(current) * (lengthOfISBN - index)} , 0)
+			total += Number(current) * (lengthOfISBN - index);
+			return total;} , 0)
 	
 	return !(result % 11)
 }

@@ -1,0 +1,28 @@
+[Issue 1] (magic number)
+linia :35 ta 10 to tzw. "magic number" nie wiadomo skąd on wynika.
+Fajnie jakbyś opisała to do stałej np.
+const ISBN_CONTROL_NUMBER = 10;
+[Issue 2] (silent assasin / error prone logic)
+Jeśli .match() nic nie znajdzie to dostaniesz tam null - warto by było się przed tym zabezpieczyć
+[Issue 3] (overcomplicated logic)
+Czy nie lepiej zamiast .toString a potem znów .split(',') zorbić mapowianie tablicy ?
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+Wtedy od razu mapować na Number  + obsłużyć znak X
+Ew. można to rozbić na 2 mappery i 2 funkcje pomocnicze (bardziej functional style)
+[Issue 4] (error prone code)
+let result = 0;
+Skoro zmiennej result potrzebujesz dopiero w linii :39 to nie lepiej dać to dopiero tam i to jako const
+[Issue 5] (too much responsibility / error prone code)
+Nie podoba mi sie zapis return w .reduce
+Nie pisz w ten sposób:
+return total += Number(current) * (lengthOfISBN - index)
+Zobacz w tym momencie w return dzieją się 2 rzeczy, z jednej strony total jest zwracany ale dodatkowo inkrementowany. Ponosi to trudność ogarnięcia tej linii :41.
+Może, skoro i tak Twój arrow nie jest one-linerem (i być nie musi) warto to rozbić:
+(total,current, index) => {
+  total += Number(current) * (lengthOfISBN - index)
+  return total;
+}
+Dużo przyjemniej i czytelniej w mojej opinii.
+Brawo za to rzutowanie Number() dużo bardziej czytelne niż np. +'0' albo inne dziwadła :slightly_smiling_face:, które działają ale nie nadają się do poprawy czytelności :slightly_smiling_face:.
+[Issue 6] (typo)
+Punctualtion ---> Punctuation
