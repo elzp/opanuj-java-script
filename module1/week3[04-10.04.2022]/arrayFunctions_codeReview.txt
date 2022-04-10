@@ -1,0 +1,9 @@
+[Issue 1] (error prone code)
+Linia :26 powinno być const a nie let - w myśl zasady "Favor const over let"
+[Issue 2] (unpredictable consequences)
+LInia :28 brakuje słowa kluczowego const w pętli for...of będzie to skutkowało "wylaniem się" item do global scope
+(załącznik graficzny)
+[Issue 3] (lack of tests)
+LInia :23 oraz :40 nigdy się nie wywołają - ponieważ brakuje przypadku testowego do sprawdzenia czy throw działa w tych 2 przypadkach
+[Issue 4] (silent assasin / logical trap)
+Twój kod odnośnie długości tablicy polega na wartości undefined a co jeśli undefined będzie istniało w tablicy ? :slightly_smiling_face:. Źle policzy się długość

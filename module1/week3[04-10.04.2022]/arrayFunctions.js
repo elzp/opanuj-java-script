@@ -23,9 +23,9 @@ function filter(array, callback) {
 		throw new Error('Argument must be an array.');
 	}
 	
-	let result = [];
+	const result = [];
 	
-	for (item of array){
+	for (const item of array){
 		if(callback(item)){
 			result.push(item);
 		}
@@ -61,7 +61,14 @@ function verify(input, goal) {
   }
 }
 
-verify(filter([1, 2, 3, 4], (el) => el % 2 === 0), [2, 4]);
-verify(filter([1, 2, 3, 4], (el) => el % 2 !== 0), [1, 3]);
-verify(length([1, 2, 3, 4]), 4);
+// verify(filter([1, 2, 3, 4], (el) => el % 2 === 0), [2, 4]);
+// verify(filter([1, 2, 3, 4], (el) => el % 2 !== 0), [1, 3]);
+// verify(length([1, 2, 3, 4]), 4);
 verify(length([]), 0);
+
+// for testing Error Objects
+// verify(filter('t', (el) => el % 2 !== 0), [1, 3]);
+// verify(length(), 0);
+
+verify(length([undefined, 2, 3, 4]), 4);
+verify(length([undefined, 2, 4, 3, 4]), 5);
