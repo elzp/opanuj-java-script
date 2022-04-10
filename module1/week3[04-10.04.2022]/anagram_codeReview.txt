@@ -1,0 +1,9 @@
+... przez co [że użyłam funkcji takich jak w countWords.js] elementy do poprawki w kodzie są bardzo podobne do "policz słowa" :slightly_smiling_face:
+Generalnie @ElaP - logicznie bardzo ładnie sobie radzisz, nazewnictwo i konwencje również. Brakuje tylko czasem uważności :slightly_smiling_face: Tutaj w kodziku też kilka miejsc bez const tylko "fruwają" te zmienne jak wolne elektrony.
+Ten kodzik z Anagramu - pomimo tego że jest "skomplikowany" i w ogóle wydaje się jako rozwiązanie "overcomplicated".
+To tutaj złotem jest inna rzecz, którą zrobiłaś.
+Czyli zauważenie że funkcje pomocnicze  z innego zadania możesz zastosować tutaj żeby policzyć zadanie wg. czegoś co już masz logicznie opracowane.
+To spełnienie pewnego zabawnego ale dość trafnego powiedzonka:
+"Dobry programista to leniwy programista"
+i nie chodzi tu o "nieroba". Tylko o to że leniwy programista zauważy że zamiast coś przeklikiwać albo powtarzać albo .... po prostu można zrobić to kodem - a najlepiej kodem który już się napisało wcześniej.
+Generalnie - proszę popraw ten kod zgodnie z sugestiami z policz słowa

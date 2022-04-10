@@ -17,14 +17,14 @@
 * 
 * 
 */
-
+'use strict';
 function countLetters(word) {
 	let result = {};
 	const letters = word.split(/[^\w]|/ig);
-// console.log(letters)
-		for(letter of letters){
-			// console.log(letter)
-		const lowerCaseLetter = letter.toLowerCase()
+
+	for(const letter of letters){
+
+			const lowerCaseLetter = letter.toLowerCase()
 		const isLetterAKeyInResult = Object.keys(result).some(item => item === lowerCaseLetter)
 			
 		if(isLetterAKeyInResult){
@@ -47,9 +47,9 @@ function areObjectEqual(object, goal){
 	
 	let result = [];
 	
-	function nonSymetricalCompareOfObjects(object1, object2){
+	function nonSymmetricalCompareOfObjects(object1, object2){
 		let result= [];
-		for(parameter of Object.keys(object1)){
+		for(const parameter of Object.keys(object1)){
 		const isParameterExistInObject = Object.keys(object2).some(item => item === parameter)
 
 		if(isParameterExistInObject){
@@ -60,9 +60,8 @@ function areObjectEqual(object, goal){
 		}
 		return result;
 	}
-	result = nonSymetricalCompareOfObjects(goalObject, objectLiteral)
-
-	result = nonSymetricalCompareOfObjects(objectLiteral, goalObject)
+	result.push(...nonSymmetricalCompareOfObjects(goalObject, objectLiteral),
+	...nonSymmetricalCompareOfObjects(objectLiteral, goalObject))
 
 	return result !== [] && result.every(item => item === true);
 
@@ -72,10 +71,9 @@ function getAnagrams(word, possibleAnagrams) {
 	const result = [];
 	const lettersOfWordAsObject = countLetters(word);
 		
-	for(annagram of possibleAnagrams){
+	for(const annagram of possibleAnagrams){
 		const lettersOfAnnagramAsObject = countLetters(annagram);
-		const isAnnagram = areObjectEqual(lettersOfWordAsObject,
-																			lettersOfAnnagramAsObject)
+		const isAnnagram = areObjectEqual(lettersOfWordAsObject, lettersOfAnnagramAsObject)
 
 		if(isAnnagram){
 			result.push(annagram);
