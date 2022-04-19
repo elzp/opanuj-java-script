@@ -1,0 +1,20 @@
+Przemek / Mentor Opanuj JavaScript  4 days ago
+1. "function checkFrontNo(string"
+string to problematyczna nazwa z dwóch powodów - po pierwsze, tak nazywa się jeden z typów, a po drugie nie przekazuje wiedzy o tym, co reprezentuje. Łańcuch znaków ale czego - imienia, nazwiska, czy... poczatek numeru karty? ;)
+
+2. "function doubleAddition(condition, total, current){
+            if(condition){
+                const doubled = (current*2).toString().split('').length >1 ? new Number((current*2).toString().charAt(0)) + new Number((current*2).toString().charAt(1)) : current*2
+                return total + doubled;
+            } else {
+                sumOfEvenNumbers = sumOfEvenNumbers + current; return total;
+            }
+        }"
+Ta funkcja to dobry kandydat na osobny plik lub moduł - jest to coś ogólnego, co może być używane przez pozostałe elementy aplikacji.
+
+3. const NumberAsArrOfStrings = cardNumber.toString().split('');
+        const arrLength = NumberAsArrOfStrings.length;
+Nazewnictwo i wcięcia nie są spójne - raz zmienne nazywasz z wielkiej, raz z małej litery. Pilnuj też, żeby na podobnej głębokości trzymać się tego samego taba, to ułatwi czytelnikowi zapoznanie się z kodem. Zazwyczaj w edytorze to kwestia jednego skrótu (lub dodania Prettiera) i masz gotowy ładny plik.
+
+4. if(luhna(arrayOfNumbers)){return typeBasedOnFront} else {return "Nieprawidłowy"}
+Nie ma co oszczędzać na linijkach :wink:

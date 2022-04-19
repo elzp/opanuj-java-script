@@ -16,8 +16,8 @@ const typesOfCards = [
      }
     ]
         
-    function checkFrontNo(string, cardLength) {
-        if (typeof string !== 'string' || string.length > 2){
+    function checkFrontNo(numbersAsString, cardLength) {
+        if (typeof numbersAsString !== 'string' || numbersAsString.length > 2){
             throw new Error("First argument is not string type or it's length is more then 2.")
         }
         if(typeof cardLength !== 'number'){
@@ -27,8 +27,8 @@ const typesOfCards = [
         typesOfCards.forEach((item)=>{
     
             const isFrontMatches = item.fronts.some(front => {
-                if(item.name === "Visa") {return front.toString() === string.charAt(0)} 
-                else {return front.toString() === string}
+                if(item.name === "Visa") {return front.toString() === numbersAsString.charAt(0)} 
+                else {return front.toString() === numbersAsString}
             })
     
             if(isFrontMatches) {
@@ -72,13 +72,17 @@ export default function checkCardNumber(cardNumber){
         if(typeof cardNumber !== "number") {
             throw new Error('Argument has to be number type.');
         }
-        const NumberAsArrOfStrings = cardNumber.toString().split('');
-        const arrLength = NumberAsArrOfStrings.length;
+        const numberAsArrOfStrings = cardNumber.toString().split('');
+        const arrLength = numberAsArrOfStrings.length;
     
-            const twoFrontNumbers = NumberAsArrOfStrings.slice(0,2).join('');
+            const twoFrontNumbers = numberAsArrOfStrings.slice(0,2).join('');
         let typeBasedOnFront = checkFrontNo(twoFrontNumbers, arrLength);
-        const arrayOfNumbers = NumberAsArrOfStrings.map(item => new Number(item) );
+        const arrayOfNumbers = numberAsArrOfStrings.map(item => new Number(item) );
         
-        if(luhna(arrayOfNumbers)){return typeBasedOnFront} else {return "Nieprawidłowy"}
+        if(luhna(arrayOfNumbers)){
+            return typeBasedOnFront
+        } else {
+            return "Nieprawidłowy"
+        }
         
     }
