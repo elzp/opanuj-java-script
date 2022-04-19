@@ -18,9 +18,9 @@
 */
 
 function flattenArray(deepArray) {
-    let arrFlatWithNumbers = deepArray.flatMap(item => item).filter(item => typeof item === 'number');
+    const arrFlatWithNumbers = deepArray.flatMap(item => item).filter(item => typeof item === 'number');
       
-      let result = arrFlatWithNumbers
+      const result = arrFlatWithNumbers
           .reduce((collectedValues, current)=>{
           const isOnlyOne = collectedValues.every(item => item !== current)
           const newCollectedValues = collectedValues.concat(current);

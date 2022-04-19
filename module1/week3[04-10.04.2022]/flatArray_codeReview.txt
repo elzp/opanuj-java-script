@@ -1,0 +1,2 @@
+Olaf / Mentor Opanuj JavaScript  8 days ago
+bardzo fajnie wykonane :ok_hand: jedna uwaga - jeśli możesz, to zawsze wybieraj const to tworzenia zmiennych, nie let
