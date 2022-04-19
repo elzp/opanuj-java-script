@@ -25,9 +25,6 @@ function convertAttributes(attributesArray){
 
 	let attributesAsString = attributesArray
 			.map(item => `${item.name}="${item.value}"`)
-		
-	attributesAsString.unshift('')
-	
 	return attributesAsString.join(' ');
 }
 
@@ -45,17 +42,19 @@ function convertAstToHtmlString(childObject) {
 			let childsAttributes = '';
 			
 			if(childObject.attributes.length > 0) {
-					childsAttributes = convertAttributes(childObject.attributes);
+					childsAttributes = " " +convertAttributes(childObject.attributes);
 			} 
 
 			let childrenAsString = '';
 
-            if(childObject.children){
-                    childrenAsString = childObject.children.map(child =>{
-                    const childAsString = convertAstToHtmlString(child);
-                    return childAsString })
-                .join('')
-            }
+      if(childObject.children){
+        childrenAsString = childObject
+        .children
+        .map(child =>{
+            const childAsString = convertAstToHtmlString(child);
+            return childAsString })
+        .join('')
+      }
 
 			return `<${childObject.tagName}${childsAttributes}>${childrenAsString}</${childObject.tagName}>`
 	}

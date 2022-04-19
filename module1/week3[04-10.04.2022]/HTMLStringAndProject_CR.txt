@@ -1,0 +1,2 @@
+Olaf / Mentor Opanuj JavaScript  8 days ago
+w convertAttributes  masz trzy operacje w trzech oddzielnych linijkach, które dałoby się zapisać w jednej - spróbuj dodać .unshift()  po map()  :smile: i jeszcze sprawa zmiennej, korzystaj z const  zawsze kiedy możesz, tutaj nawet wystarczy zwrócić całość bez tworzenia zmiennej
